@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HR & Employee Performance Dashboard</title>
+    <title>HR Insight | Employee Management</title>
 
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Chart.js -->
@@ -14,473 +24,2443 @@
 
 <body>
 
-    <div class="dashboard">
+    <!-- =====================================================
+         LOGIN PAGE
+    ====================================================== -->
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
+    <section id="loginPage" class="auth-page">
 
-            <div class="logo">
-                <div class="logo-icon">HR</div>
-                <div>
-                    <h2>HR Insight</h2>
-                    <span>Performance Dashboard</span>
+        <div class="auth-container">
+
+            <!-- Left Side -->
+            <div class="auth-brand">
+
+                <div class="brand-logo">
+                    HR
                 </div>
-            </div>
 
-            <nav>
-                <a href="#" class="nav-item active">
-                    <span>▦</span>
-                    Dashboard
-                </a>
+                <h1>
+                    HR Insight
+                </h1>
 
-                <a href="#" class="nav-item">
-                    <span>👥</span>
-                    Employees
-                </a>
+                <p>
+                    Employee Performance & Analytics Platform
+                </p>
 
-                <a href="#" class="nav-item">
-                    <span>📅</span>
-                    Attendance
-                </a>
+                <div class="auth-illustration">
+                    <div class="illustration-card card-one">
+                        <span>👥</span>
+                        <strong>248</strong>
+                        <small>Employees</small>
+                    </div>
 
-                <a href="#" class="nav-item">
-                    <span>📈</span>
-                    Performance
-                </a>
+                    <div class="illustration-card card-two">
+                        <span>📈</span>
+                        <strong>96.4%</strong>
+                        <small>Performance</small>
+                    </div>
 
-                <a href="#" class="nav-item">
-                    <span>⚙</span>
-                    Settings
-                </a>
-            </nav>
-
-            <div class="sidebar-footer">
-                <div class="profile">
-                    <div class="avatar">AD</div>
-
-                    <div>
-                        <strong>Admin HR</strong>
-                        <small>HR Manager</small>
+                    <div class="illustration-card card-three">
+                        <span>✓</span>
+                        <strong>94.8%</strong>
+                        <small>Attendance</small>
                     </div>
                 </div>
+
+            </div>
+
+
+            <!-- Login Form -->
+            <div class="auth-form-wrapper">
+
+                <div class="auth-form">
+
+                    <div class="mobile-logo">
+                        <div class="brand-logo">
+                            HR
+                        </div>
+
+                        <h2>HR Insight</h2>
+                    </div>
+
+                    <span class="welcome-label">
+                        WELCOME BACK
+                    </span>
+
+                    <h2>
+                        Sign in to your account
+                    </h2>
+
+                    <p class="auth-description">
+                        Enter your credentials to access your HR dashboard.
+                    </p>
+
+
+                    <form id="loginForm">
+
+                        <div class="form-group">
+
+                            <label for="loginEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                placeholder="admin@hrinsight.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <div class="password-label">
+
+                                <label for="loginPassword">
+                                    Password
+                                </label>
+
+                                <a href="#" id="forgotPassword">
+                                    Forgot password?
+                                </a>
+
+                            </div>
+
+                            <div class="password-input">
+
+                                <input
+                                    type="password"
+                                    id="loginPassword"
+                                    placeholder="Enter your password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="show-password"
+                                    id="toggleLoginPassword"
+                                >
+                                    👁
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="loginError"
+                            class="form-error"
+                        >
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="auth-button"
+                        >
+                            Sign In
+                        </button>
+
+                    </form>
+
+
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+
+
+                    <p class="register-text">
+                        Don't have an account?
+                        <a href="#" id="showRegister">
+                            Create an account
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         REGISTER PAGE
+    ====================================================== -->
+
+    <section
+        id="registerPage"
+        class="auth-page hidden"
+    >
+
+        <div class="auth-container">
+
+            <!-- Left Side -->
+            <div class="auth-brand">
+
+                <div class="brand-logo">
+                    HR
+                </div>
+
+                <h1>
+                    HR Insight
+                </h1>
+
+                <p>
+                    Build smarter teams with better data.
+                </p>
+
+                <div class="register-benefits">
+
+                    <div class="benefit">
+                        <span>✓</span>
+                        <div>
+                            <strong>Track Attendance</strong>
+                            <small>
+                                Monitor employee attendance easily.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="benefit">
+                        <span>✓</span>
+                        <div>
+                            <strong>Analyze Performance</strong>
+                            <small>
+                                Understand team performance through data.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="benefit">
+                        <span>✓</span>
+                        <div>
+                            <strong>Manage Employees</strong>
+                            <small>
+                                Keep employee information organized.
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Register Form -->
+            <div class="auth-form-wrapper">
+
+                <div class="auth-form">
+
+                    <div class="mobile-logo">
+
+                        <div class="brand-logo">
+                            HR
+                        </div>
+
+                        <h2>
+                            HR Insight
+                        </h2>
+
+                    </div>
+
+                    <span class="welcome-label">
+                        GET STARTED
+                    </span>
+
+                    <h2>
+                        Create your account
+                    </h2>
+
+                    <p class="auth-description">
+                        Set up your HR administrator account to get started.
+                    </p>
+
+
+                    <form id="registerForm">
+
+                        <div class="form-group">
+
+                            <label for="registerName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="registerName"
+                                placeholder="e.g. Alex Morgan"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="registerEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                placeholder="admin@company.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="registerPassword">
+                                Password
+                            </label>
+
+                            <div class="password-input">
+
+                                <input
+                                    type="password"
+                                    id="registerPassword"
+                                    placeholder="Create a password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="show-password"
+                                    id="toggleRegisterPassword"
+                                >
+                                    👁
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="registerConfirmPassword">
+                                Confirm Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="registerConfirmPassword"
+                                placeholder="Repeat your password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div
+                            id="registerError"
+                            class="form-error"
+                        >
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="auth-button"
+                        >
+                            Create Account
+                        </button>
+
+                    </form>
+
+
+                    <p class="register-text">
+                        Already have an account?
+                        <a href="#" id="showLogin">
+                            Sign in
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <div
+        id="app"
+        class="app hidden"
+    >
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <!-- Logo -->
+            <div class="sidebar-logo">
+
+                <div class="brand-logo">
+                    HR
+                </div>
+
+                <div class="logo-text">
+
+                    <strong>
+                        HR Insight
+                    </strong>
+
+                    <span>
+                        Analytics Platform
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+
+                <p class="nav-title">
+                    MAIN MENU
+                </p>
+
+
+                <button
+                    class="nav-item active"
+                    data-page="dashboard"
+                >
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="employees"
+                >
+                    <span class="nav-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        Employees
+                    </span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="attendance"
+                >
+                    <span class="nav-icon">
+                        📅
+                    </span>
+
+                    <span>
+                        Attendance
+                    </span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="performance"
+                >
+                    <span class="nav-icon">
+                        📊
+                    </span>
+
+                    <span>
+                        Performance
+                    </span>
+                </button>
+
+
+                <p class="nav-title second-title">
+                    MANAGEMENT
+                </p>
+
+
+                <button
+                    class="nav-item"
+                    data-page="profile"
+                >
+                    <span class="nav-icon">
+                        👤
+                    </span>
+
+                    <span>
+                        My Profile
+                    </span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="settings"
+                >
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+                </button>
+
+            </nav>
+
+
+            <!-- Sidebar User -->
+            <div class="sidebar-user">
+
+                <div class="user-avatar" id="sidebarAvatar">
+                    AD
+                </div>
+
+                <div class="user-info">
+
+                    <strong id="sidebarUserName">
+                        Admin HR
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+                <button
+                    class="sidebar-more"
+                    id="sidebarProfileButton"
+                >
+                    ⋮
+                </button>
+
             </div>
 
         </aside>
 
 
-        <!-- Main Content -->
-        <main class="main-content">
 
-            <!-- Header -->
-            <header class="topbar">
+        <!-- =================================================
+             MAIN AREA
+        ================================================== -->
 
-                <div>
-                    <p class="breadcrumb">Dashboard / Overview</p>
-                    <h1>HR & Employee Performance</h1>
-                    <p class="subtitle">
-                        Monitor employee attendance, overtime, turnover, and monthly performance.
-                    </p>
+        <main class="main-area">
+
+
+            <!-- Top Header -->
+            <header class="top-header">
+
+                <div class="mobile-menu">
+                    ☰
                 </div>
 
-                <div class="header-actions">
+                <div class="page-heading">
 
-                    <select id="monthFilter">
-                        <option value="January">January 2026</option>
-                        <option value="February">February 2026</option>
-                        <option value="March">March 2026</option>
-                        <option value="April">April 2026</option>
-                        <option value="May">May 2026</option>
-                        <option value="June">June 2026</option>
-                    </select>
+                    <span id="pageEyebrow">
+                        OVERVIEW
+                    </span>
 
-                    <button class="notification">🔔</button>
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <!-- Search -->
+                    <div class="global-search">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="globalSearch"
+                            placeholder="Search..."
+                        >
+
+                    </div>
+
+
+                    <!-- Notification -->
+                    <button
+                        class="header-icon"
+                        id="notificationButton"
+                    >
+                        🔔
+
+                        <span class="notification-dot"></span>
+
+                    </button>
+
+
+                    <!-- Profile -->
+                    <button
+                        class="header-profile"
+                        id="headerProfileButton"
+                    >
+
+                        <div
+                            class="user-avatar small"
+                            id="headerAvatar"
+                        >
+                            AD
+                        </div>
+
+                        <div class="header-user-info">
+
+                            <strong id="headerUserName">
+                                Admin HR
+                            </strong>
+
+                            <span>
+                                HR Manager
+                            </span>
+
+                        </div>
+
+                        <span>
+                            ▾
+                        </span>
+
+                    </button>
 
                 </div>
 
             </header>
 
 
-            <!-- KPI Cards -->
-            <section class="kpi-grid">
 
-                <div class="kpi-card">
+            <!-- =================================================
+                 PAGE: DASHBOARD
+            ================================================== -->
 
-                    <div class="kpi-top">
-                        <span class="kpi-title">Attendance Rate</span>
-                        <div class="kpi-icon blue">✓</div>
-                    </div>
+            <section
+                id="dashboardPage"
+                class="page active-page"
+            >
 
-                    <h2 id="attendanceRate">94.8%</h2>
-
-                    <div class="kpi-bottom">
-                        <span class="positive">↑ 2.4%</span>
-                        <span>vs last month</span>
-                    </div>
-
-                </div>
-
-
-                <div class="kpi-card">
-
-                    <div class="kpi-top">
-                        <span class="kpi-title">Overtime Hours</span>
-                        <div class="kpi-icon purple">⏱</div>
-                    </div>
-
-                    <h2 id="overtimeHours">1,284 hrs</h2>
-
-                    <div class="kpi-bottom">
-                        <span class="warning">↑ 8.2%</span>
-                        <span>vs last month</span>
-                    </div>
-
-                </div>
-
-
-                <div class="kpi-card">
-
-                    <div class="kpi-top">
-                        <span class="kpi-title">Turnover Rate</span>
-                        <div class="kpi-icon orange">↻</div>
-                    </div>
-
-                    <h2 id="turnoverRate">4.6%</h2>
-
-                    <div class="kpi-bottom">
-                        <span class="positive">↓ 1.1%</span>
-                        <span>vs last month</span>
-                    </div>
-
-                </div>
-
-
-                <div class="kpi-card">
-
-                    <div class="kpi-top">
-                        <span class="kpi-title">Employees</span>
-                        <div class="kpi-icon green">👥</div>
-                    </div>
-
-                    <h2 id="employeeCount">248</h2>
-
-                    <div class="kpi-bottom">
-                        <span class="positive">↑ 6</span>
-                        <span>new employees</span>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- Charts -->
-            <section class="charts-grid">
-
-                <!-- Attendance Chart -->
-                <div class="card attendance-card">
-
-                    <div class="card-header">
-
-                        <div>
-                            <h3>Attendance Overview</h3>
-                            <p>Monthly attendance percentage</p>
-                        </div>
-
-                        <button class="more-btn">•••</button>
-
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="attendanceChart"></canvas>
-                    </div>
-
-                </div>
-
-
-                <!-- Department Performance -->
-                <div class="card performance-card">
-
-                    <div class="card-header">
-
-                        <div>
-                            <h3>Department Performance</h3>
-                            <p>Target achievement</p>
-                        </div>
-
-                        <button class="more-btn">•••</button>
-
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="performanceChart"></canvas>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- Bottom Section -->
-            <section class="bottom-grid">
-
-                <!-- Overtime -->
-                <div class="card">
-
-                    <div class="card-header">
-
-                        <div>
-                            <h3>Overtime by Department</h3>
-                            <p>Total overtime hours</p>
-                        </div>
-
-                    </div>
-
-                    <div class="overtime-list">
-
-                        <div class="department-row">
-                            <div class="department-info">
-                                <span class="department-dot marketing"></span>
-                                <span>Marketing</span>
-                            </div>
-
-                            <strong>324 hrs</strong>
-                        </div>
-
-                        <div class="progress">
-                            <div style="width: 78%"></div>
-                        </div>
-
-
-                        <div class="department-row">
-                            <div class="department-info">
-                                <span class="department-dot finance"></span>
-                                <span>Finance</span>
-                            </div>
-
-                            <strong>218 hrs</strong>
-                        </div>
-
-                        <div class="progress">
-                            <div style="width: 52%"></div>
-                        </div>
-
-
-                        <div class="department-row">
-                            <div class="department-info">
-                                <span class="department-dot it"></span>
-                                <span>IT</span>
-                            </div>
-
-                            <strong>412 hrs</strong>
-                        </div>
-
-                        <div class="progress">
-                            <div style="width: 92%"></div>
-                        </div>
-
-
-                        <div class="department-row">
-                            <div class="department-info">
-                                <span class="department-dot operations"></span>
-                                <span>Operations</span>
-                            </div>
-
-                            <strong>330 hrs</strong>
-                        </div>
-
-                        <div class="progress">
-                            <div style="width: 81%"></div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Employee Status -->
-                <div class="card">
-
-                    <div class="card-header">
-
-                        <div>
-                            <h3>Employee Status</h3>
-                            <p>Current workforce overview</p>
-                        </div>
-
-                    </div>
-
-                    <div class="employee-status">
-
-                        <div class="status-item">
-                            <div class="status-circle active-status">
-                                <span>220</span>
-                            </div>
-
-                            <div>
-                                <strong>Active</strong>
-                                <small>88.7%</small>
-                            </div>
-                        </div>
-
-
-                        <div class="status-item">
-                            <div class="status-circle leave-status">
-                                <span>18</span>
-                            </div>
-
-                            <div>
-                                <strong>On Leave</strong>
-                                <small>7.3%</small>
-                            </div>
-                        </div>
-
-
-                        <div class="status-item">
-                            <div class="status-circle inactive-status">
-                                <span>10</span>
-                            </div>
-
-                            <div>
-                                <strong>Inactive</strong>
-                                <small>4.0%</small>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- Performance Table -->
-            <section class="card table-card">
-
-                <div class="card-header">
+                <div class="page-intro">
 
                     <div>
-                        <h3>Monthly Department Achievement</h3>
-                        <p>Performance against monthly targets</p>
+
+                        <h2>
+                            Good morning, <span id="welcomeName">Admin</span>! 👋
+                        </h2>
+
+                        <p>
+                            Here's what's happening with your workforce today.
+                        </p>
+
                     </div>
 
-                    <button class="export-btn" onclick="exportData()">
-                        ↓ Export Report
+
+                    <div class="date-filter">
+
+                        <span>
+                            📅
+                        </span>
+
+                        <select id="dashboardMonth">
+
+                            <option value="january">
+                                January 2026
+                            </option>
+
+                            <option value="february">
+                                February 2026
+                            </option>
+
+                            <option value="march">
+                                March 2026
+                            </option>
+
+                            <option value="april">
+                                April 2026
+                            </option>
+
+                            <option value="may">
+                                May 2026
+                            </option>
+
+                            <option value="june">
+                                June 2026
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- KPI Cards -->
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-header">
+
+                            <div class="stat-icon attendance-icon">
+                                ✓
+                            </div>
+
+                            <span class="stat-label">
+                                ATTENDANCE RATE
+                            </span>
+
+                        </div>
+
+                        <h3 id="dashboardAttendance">
+                            94.8%
+                        </h3>
+
+                        <div class="stat-change positive">
+                            ↑ 2.4%
+                            <span>
+                                vs last month
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-header">
+
+                            <div class="stat-icon overtime-icon">
+                                ⏱
+                            </div>
+
+                            <span class="stat-label">
+                                OVERTIME HOURS
+                            </span>
+
+                        </div>
+
+                        <h3 id="dashboardOvertime">
+                            1,284
+                        </h3>
+
+                        <div class="stat-change negative">
+                            ↑ 8.2%
+                            <span>
+                                vs last month
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-header">
+
+                            <div class="stat-icon turnover-icon">
+                                ↻
+                            </div>
+
+                            <span class="stat-label">
+                                TURNOVER RATE
+                            </span>
+
+                        </div>
+
+                        <h3 id="dashboardTurnover">
+                            4.6%
+                        </h3>
+
+                        <div class="stat-change positive">
+                            ↓ 1.1%
+                            <span>
+                                vs last month
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-header">
+
+                            <div class="stat-icon employee-icon">
+                                👥
+                            </div>
+
+                            <span class="stat-label">
+                                TOTAL EMPLOYEES
+                            </span>
+
+                        </div>
+
+                        <h3 id="dashboardEmployees">
+                            248
+                        </h3>
+
+                        <div class="stat-change positive">
+                            ↑ 6
+                            <span>
+                                new employees
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Dashboard Charts -->
+
+                <div class="dashboard-chart-grid">
+
+
+                    <div class="dashboard-card large-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h3>
+                                    Attendance Overview
+                                </h3>
+
+                                <p>
+                                    Weekly attendance rate
+                                </p>
+
+                            </div>
+
+                            <button class="card-menu">
+                                ⋮
+                            </button>
+
+                        </div>
+
+                        <div class="chart-box">
+                            <canvas id="attendanceOverviewChart"></canvas>
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h3>
+                                    Employee Distribution
+                                </h3>
+
+                                <p>
+                                    Employees by department
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chart-box doughnut-box">
+                            <canvas id="employeeDistributionChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Bottom Dashboard -->
+
+                <div class="dashboard-bottom-grid">
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h3>
+                                    Department Performance
+                                </h3>
+
+                                <p>
+                                    Monthly target achievement
+                                </p>
+
+                            </div>
+
+                            <button class="view-all" data-page="performance">
+                                View All →
+                            </button>
+
+                        </div>
+
+                        <div class="chart-box performance-chart">
+                            <canvas id="departmentPerformanceChart"></canvas>
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h3>
+                                    Today's Attendance
+                                </h3>
+
+                                <p>
+                                    September 5, 2026
+                                </p>
+
+                            </div>
+
+                            <span class="live-badge">
+                                ● LIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="attendance-summary">
+
+                            <div class="attendance-number">
+                                <strong>
+                                    231
+                                </strong>
+
+                                <span>
+                                    Present
+                                </span>
+                            </div>
+
+                            <div class="attendance-number">
+                                <strong>
+                                    9
+                                </strong>
+
+                                <span>
+                                    Late
+                                </span>
+                            </div>
+
+                            <div class="attendance-number">
+                                <strong>
+                                    8
+                                </strong>
+
+                                <span>
+                                    Absent
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="attendance-bar">
+
+                            <div
+                                class="present-bar"
+                                style="width: 93%"
+                            ></div>
+
+                            <div
+                                class="late-bar"
+                                style="width: 4%"
+                            ></div>
+
+                            <div
+                                class="absent-bar"
+                                style="width: 3%"
+                            ></div>
+
+                        </div>
+
+
+                        <button
+                            class="secondary-button"
+                            data-page="attendance"
+                        >
+                            View Attendance Details
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PAGE: EMPLOYEES
+            ================================================== -->
+
+            <section
+                id="employeesPage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+
+                        <h2>
+                            Employee Management
+                        </h2>
+
+                        <p>
+                            Manage and monitor your workforce information.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-button">
+                        + Add Employee
                     </button>
 
                 </div>
 
 
-                <div class="table-wrapper">
+                <div class="employee-stat-grid">
 
-                    <table>
+                    <div class="mini-stat">
+                        <span>Total Employees</span>
+                        <strong>248</strong>
+                    </div>
 
-                        <thead>
-                            <tr>
-                                <th>Department</th>
-                                <th>Employees</th>
-                                <th>Target</th>
-                                <th>Achievement</th>
-                                <th>Progress</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
+                    <div class="mini-stat">
+                        <span>Active</span>
+                        <strong>220</strong>
+                    </div>
 
-                        <tbody id="performanceTable">
+                    <div class="mini-stat">
+                        <span>On Leave</span>
+                        <strong>18</strong>
+                    </div>
 
-                            <tr>
-                                <td>
-                                    <strong>Marketing</strong>
-                                </td>
+                    <div class="mini-stat">
+                        <span>New This Month</span>
+                        <strong>6</strong>
+                    </div>
 
-                                <td>42</td>
-                                <td>100%</td>
-                                <td>108%</td>
-
-                                <td>
-                                    <div class="table-progress">
-                                        <div style="width:100%"></div>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <span class="status-badge success">Exceeded</span>
-                                </td>
-                            </tr>
+                </div>
 
 
-                            <tr>
-                                <td>
-                                    <strong>Finance</strong>
-                                </td>
+                <div class="dashboard-card table-card">
 
-                                <td>35</td>
-                                <td>100%</td>
-                                <td>96%</td>
+                    <div class="table-toolbar">
 
-                                <td>
-                                    <div class="table-progress">
-                                        <div style="width:96%"></div>
-                                    </div>
-                                </td>
+                        <div>
+                            <h3>
+                                Employee Directory
+                            </h3>
 
-                                <td>
-                                    <span class="status-badge warning-status">On Track</span>
-                                </td>
-                            </tr>
+                            <p>
+                                List of registered employees
+                            </p>
+                        </div>
+
+                        <div class="table-actions">
+
+                            <input
+                                type="text"
+                                id="employeeSearch"
+                                placeholder="Search employee..."
+                            >
+
+                            <select id="departmentFilter">
+
+                                <option value="all">
+                                    All Departments
+                                </option>
+
+                                <option value="marketing">
+                                    Marketing
+                                </option>
+
+                                <option value="finance">
+                                    Finance
+                                </option>
+
+                                <option value="it">
+                                    IT
+                                </option>
+
+                                <option value="operations">
+                                    Operations
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
 
 
-                            <tr>
-                                <td>
-                                    <strong>IT</strong>
-                                </td>
+                    <div class="table-wrapper">
 
-                                <td>51</td>
-                                <td>100%</td>
-                                <td>114%</td>
+                        <table id="employeeTable">
 
-                                <td>
-                                    <div class="table-progress">
-                                        <div style="width:100%"></div>
-                                    </div>
-                                </td>
+                            <thead>
 
-                                <td>
-                                    <span class="status-badge success">Exceeded</span>
-                                </td>
-                            </tr>
+                                <tr>
+
+                                    <th>
+                                        Employee
+                                    </th>
+
+                                    <th>
+                                        Department
+                                    </th>
+
+                                    <th>
+                                        Position
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Performance
+                                    </th>
+
+                                    <th>
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
 
 
-                            <tr>
-                                <td>
-                                    <strong>Operations</strong>
-                                </td>
+                            <tbody>
 
-                                <td>76</td>
-                                <td>100%</td>
-                                <td>91%</td>
+                                <tr>
 
-                                <td>
-                                    <div class="table-progress">
-                                        <div style="width:91%"></div>
-                                    </div>
-                                </td>
+                                    <td>
+                                        <div class="employee-cell">
 
-                                <td>
-                                    <span class="status-badge warning-status">On Track</span>
-                                </td>
-                            </tr>
+                                            <div class="table-avatar">
+                                                AM
+                                            </div>
 
-                        </tbody>
+                                            <div>
+                                                <strong>
+                                                    Alex Morgan
+                                                </strong>
 
-                    </table>
+                                                <span>
+                                                    EMP-001
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        Marketing
+                                    </td>
+
+                                    <td>
+                                        Marketing Manager
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            108%
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <button class="action-button">
+                                            ⋮
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="employee-cell">
+
+                                            <div class="table-avatar">
+                                                SW
+                                            </div>
+
+                                            <div>
+                                                <strong>
+                                                    Sarah Williams
+                                                </strong>
+
+                                                <span>
+                                                    EMP-002
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        Finance
+                                    </td>
+
+                                    <td>
+                                        Financial Analyst
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            96%
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <button class="action-button">
+                                            ⋮
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="employee-cell">
+
+                                            <div class="table-avatar">
+                                                DM
+                                            </div>
+
+                                            <div>
+                                                <strong>
+                                                    Daniel Miller
+                                                </strong>
+
+                                                <span>
+                                                    EMP-003
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        IT
+                                    </td>
+
+                                    <td>
+                                        Software Engineer
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            114%
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <button class="action-button">
+                                            ⋮
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="employee-cell">
+
+                                            <div class="table-avatar">
+                                                EM
+                                            </div>
+
+                                            <div>
+                                                <strong>
+                                                    Emma Miller
+                                                </strong>
+
+                                                <span>
+                                                    EMP-004
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        Operations
+                                    </td>
+
+                                    <td>
+                                        Operations Specialist
+                                    </td>
+
+                                    <td>
+                                        <span class="status leave">
+                                            On Leave
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            91%
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <button class="action-button">
+                                            ⋮
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
 
             </section>
 
 
-            <footer>
-                HR Insight Dashboard • Portfolio Project • 2026
+
+            <!-- =================================================
+                 PAGE: ATTENDANCE
+            ================================================== -->
+
+            <section
+                id="attendancePage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+
+                        <h2>
+                            Attendance Management
+                        </h2>
+
+                        <p>
+                            Track employee attendance, lateness, and absence.
+                        </p>
+
+                    </div>
+
+                    <div class="page-actions">
+
+                        <select id="attendanceMonth">
+
+                            <option>
+                                September 2026
+                            </option>
+
+                            <option>
+                                August 2026
+                            </option>
+
+                            <option>
+                                July 2026
+                            </option>
+
+                        </select>
+
+                        <button class="primary-button">
+                            ↓ Export
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            ATTENDANCE RATE
+                        </span>
+
+                        <h3>
+                            94.8%
+                        </h3>
+
+                        <div class="stat-change positive">
+                            ↑ 2.4%
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            PRESENT TODAY
+                        </span>
+
+                        <h3>
+                            231
+                        </h3>
+
+                        <div class="stat-change positive">
+                            93.1% of workforce
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            LATE TODAY
+                        </span>
+
+                        <h3>
+                            9
+                        </h3>
+
+                        <div class="stat-change negative">
+                            3.6% of workforce
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            ABSENT TODAY
+                        </span>
+
+                        <h3>
+                            8
+                        </h3>
+
+                        <div class="stat-change">
+                            3.2% of workforce
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <h3>
+                                Attendance Trend
+                            </h3>
+
+                            <p>
+                                Daily attendance percentage
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chart-box large-chart">
+                        <canvas id="attendanceTrendChart"></canvas>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card table-card">
+
+                    <div class="table-toolbar">
+
+                        <div>
+
+                            <h3>
+                                Today's Attendance
+                            </h3>
+
+                            <p>
+                                Employee check-in records
+                            </p>
+
+                        </div>
+
+                        <input
+                            type="date"
+                            value="2026-09-05"
+                        >
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Employee
+                                    </th>
+
+                                    <th>
+                                        Department
+                                    </th>
+
+                                    <th>
+                                        Check In
+                                    </th>
+
+                                    <th>
+                                        Check Out
+                                    </th>
+
+                                    <th>
+                                        Working Hours
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        Alex Morgan
+                                    </td>
+
+                                    <td>
+                                        Marketing
+                                    </td>
+
+                                    <td>
+                                        08:42 AM
+                                    </td>
+
+                                    <td>
+                                        05:12 PM
+                                    </td>
+
+                                    <td>
+                                        8h 30m
+                                    </td>
+
+                                    <td>
+                                        <span class="status present">
+                                            Present
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Sarah Williams
+                                    </td>
+
+                                    <td>
+                                        Finance
+                                    </td>
+
+                                    <td>
+                                        09:17 AM
+                                    </td>
+
+                                    <td>
+                                        05:10 PM
+                                    </td>
+
+                                    <td>
+                                        7h 53m
+                                    </td>
+
+                                    <td>
+                                        <span class="status late">
+                                            Late
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Daniel Miller
+                                    </td>
+
+                                    <td>
+                                        IT
+                                    </td>
+
+                                    <td>
+                                        08:31 AM
+                                    </td>
+
+                                    <td>
+                                        06:45 PM
+                                    </td>
+
+                                    <td>
+                                        10h 14m
+                                    </td>
+
+                                    <td>
+                                        <span class="status present">
+                                            Present
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Emma Miller
+                                    </td>
+
+                                    <td>
+                                        Operations
+                                    </td>
+
+                                    <td>
+                                        —
+                                    </td>
+
+                                    <td>
+                                        —
+                                    </td>
+
+                                    <td>
+                                        0h
+                                    </td>
+
+                                    <td>
+                                        <span class="status absent">
+                                            Absent
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PAGE: PERFORMANCE
+            ================================================== -->
+
+            <section
+                id="performancePage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+
+                        <h2>
+                            Employee Performance
+                        </h2>
+
+                        <p>
+                            Analyze monthly targets and department achievements.
+                        </p>
+
+                    </div>
+
+                    <select>
+
+                        <option>
+                            September 2026
+                        </option>
+
+                        <option>
+                            August 2026
+                        </option>
+
+                        <option>
+                            July 2026
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            OVERALL PERFORMANCE
+                        </span>
+
+                        <h3>
+                            102.3%
+                        </h3>
+
+                        <div class="stat-change positive">
+                            ↑ 4.2%
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            TARGET ACHIEVED
+                        </span>
+
+                        <h3>
+                            3 / 4
+                        </h3>
+
+                        <div class="stat-change positive">
+                            Departments
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            TOP DEPARTMENT
+                        </span>
+
+                        <h3>
+                            IT
+                        </h3>
+
+                        <div class="stat-change positive">
+                            114% achievement
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            BELOW TARGET
+                        </span>
+
+                        <h3>
+                            1
+                        </h3>
+
+                        <div class="stat-change negative">
+                            Operations
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <h3>
+                                Department Achievement
+                            </h3>
+
+                            <p>
+                                Actual performance compared with target
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chart-box large-chart">
+                        <canvas id="performanceOverviewChart"></canvas>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card table-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <h3>
+                                Performance Details
+                            </h3>
+
+                            <p>
+                                Monthly performance by department
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Department
+                                    </th>
+
+                                    <th>
+                                        Employees
+                                    </th>
+
+                                    <th>
+                                        Target
+                                    </th>
+
+                                    <th>
+                                        Achievement
+                                    </th>
+
+                                    <th>
+                                        Progress
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Marketing
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        42
+                                    </td>
+
+                                    <td>
+                                        100%
+                                    </td>
+
+                                    <td>
+                                        108%
+                                    </td>
+
+                                    <td>
+                                        <div class="table-progress">
+                                            <div style="width:100%"></div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="status excellent">
+                                            Exceeded
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Finance
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        35
+                                    </td>
+
+                                    <td>
+                                        100%
+                                    </td>
+
+                                    <td>
+                                        96%
+                                    </td>
+
+                                    <td>
+                                        <div class="table-progress">
+                                            <div style="width:96%"></div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="status good">
+                                            On Track
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            IT
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        51
+                                    </td>
+
+                                    <td>
+                                        100%
+                                    </td>
+
+                                    <td>
+                                        114%
+                                    </td>
+
+                                    <td>
+                                        <div class="table-progress">
+                                            <div style="width:100%"></div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="status excellent">
+                                            Exceeded
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Operations
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        76
+                                    </td>
+
+                                    <td>
+                                        100%
+                                    </td>
+
+                                    <td>
+                                        91%
+                                    </td>
+
+                                    <td>
+                                        <div class="table-progress">
+                                            <div style="width:91%"></div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="status warning">
+                                            Needs Attention
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PAGE: PROFILE
+            ================================================== -->
+
+            <section
+                id="profilePage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+
+                        <h2>
+                            My Profile
+                        </h2>
+
+                        <p>
+                            Manage your administrator account information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-layout">
+
+
+                    <div class="dashboard-card profile-card">
+
+                        <div class="profile-cover"></div>
+
+                        <div class="profile-main">
+
+                            <div
+                                class="profile-avatar"
+                                id="profileAvatar"
+                            >
+                                AD
+                            </div>
+
+                            <h2 id="profileName">
+                                Admin HR
+                            </h2>
+
+                            <p>
+                                HR Manager
+                            </p>
+
+                            <span class="profile-status">
+                                ● Active Account
+                            </span>
+
+                        </div>
+
+
+                        <div class="profile-details">
+
+                            <div>
+
+                                <span>
+                                    EMAIL
+                                </span>
+
+                                <strong id="profileEmail">
+                                    admin@hrinsight.com
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    ROLE
+                                </span>
+
+                                <strong>
+                                    Administrator
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    MEMBER SINCE
+                                </span>
+
+                                <strong>
+                                    January 2026
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h3>
+                                    Personal Information
+                                </h3>
+
+                                <p>
+                                    Update your profile details.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <form id="profileForm">
+
+                            <div class="profile-form-grid">
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="profileNameInput"
+                                        value="Admin HR"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Email
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="profileEmailInput"
+                                        value="admin@hrinsight.com"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Job Title
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        value="HR Manager"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Phone Number
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        placeholder="+62 812-xxxx-xxxx"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Save Changes
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PAGE: SETTINGS
+            ================================================== -->
+
+            <section
+                id="settingsPage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+
+                        <h2>
+                            Settings
+                        </h2>
+
+                        <p>
+                            Customize your HR Insight experience.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h3>
+                                    General Settings
+                                </h3>
+
+                                <p>
+                                    Manage dashboard preferences.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+
+                                <strong>
+                                    Email Notifications
+                                </strong>
+
+                                <span>
+                                    Receive updates about employee activity.
+                                </span>
+
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+
+                                <strong>
+                                    Attendance Alerts
+                                </strong>
+
+                                <span>
+                                    Get notified when employees are late.
+                                </span>
+
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+
+                                <strong>
+                                    Performance Reports
+                                </strong>
+
+                                <span>
+                                    Receive monthly performance summaries.
+                                </span>
+
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-card danger-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h3>
+                                    Account
+                                </h3>
+
+                                <p>
+                                    Manage your session.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            id="logoutButton"
+                            class="logout-button"
+                        >
+                            Log Out
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Footer -->
+            <footer class="app-footer">
+
+                <span>
+                    HR Insight Dashboard
+                </span>
+
+                <span>
+                    © 2026 • Portfolio Project
+                </span>
+
             </footer>
 
         </main>
@@ -488,7 +2468,115 @@
     </div>
 
 
+
+    <!-- =====================================================
+         NOTIFICATION PANEL
+    ====================================================== -->
+
+    <div
+        id="notificationPanel"
+        class="notification-panel hidden"
+    >
+
+        <div class="notification-header">
+
+            <strong>
+                Notifications
+            </strong>
+
+            <button id="closeNotifications">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="notification-item">
+
+            <span class="notification-icon">
+                📅
+            </span>
+
+            <div>
+
+                <strong>
+                    Attendance Update
+                </strong>
+
+                <p>
+                    9 employees arrived late today.
+                </p>
+
+                <small>
+                    10 minutes ago
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification-item">
+
+            <span class="notification-icon">
+                📈
+            </span>
+
+            <div>
+
+                <strong>
+                    Performance Target
+                </strong>
+
+                <p>
+                    IT exceeded the monthly target.
+                </p>
+
+                <small>
+                    1 hour ago
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification-item">
+
+            <span class="notification-icon">
+                👥
+            </span>
+
+            <div>
+
+                <strong>
+                    New Employee
+                </strong>
+
+                <p>
+                    A new employee joined Marketing.
+                </p>
+
+                <small>
+                    Yesterday
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
+
+
