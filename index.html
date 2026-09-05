@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HR & Employee Performance Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">HR</div>
+                <div>
+                    <h2>HR Insight</h2>
+                    <span>Performance Dashboard</span>
+                </div>
+            </div>
+
+            <nav>
+                <a href="#" class="nav-item active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>👥</span>
+                    Employees
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>📅</span>
+                    Attendance
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>📈</span>
+                    Performance
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>⚙</span>
+                    Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="profile">
+                    <div class="avatar">AD</div>
+
+                    <div>
+                        <strong>Admin HR</strong>
+                        <small>HR Manager</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div>
+                    <p class="breadcrumb">Dashboard / Overview</p>
+                    <h1>HR & Employee Performance</h1>
+                    <p class="subtitle">
+                        Monitor employee attendance, overtime, turnover, and monthly performance.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <select id="monthFilter">
+                        <option value="January">January 2026</option>
+                        <option value="February">February 2026</option>
+                        <option value="March">March 2026</option>
+                        <option value="April">April 2026</option>
+                        <option value="May">May 2026</option>
+                        <option value="June">June 2026</option>
+                    </select>
+
+                    <button class="notification">🔔</button>
+
+                </div>
+
+            </header>
+
+
+            <!-- KPI Cards -->
+            <section class="kpi-grid">
+
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+                        <span class="kpi-title">Attendance Rate</span>
+                        <div class="kpi-icon blue">✓</div>
+                    </div>
+
+                    <h2 id="attendanceRate">94.8%</h2>
+
+                    <div class="kpi-bottom">
+                        <span class="positive">↑ 2.4%</span>
+                        <span>vs last month</span>
+                    </div>
+
+                </div>
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+                        <span class="kpi-title">Overtime Hours</span>
+                        <div class="kpi-icon purple">⏱</div>
+                    </div>
+
+                    <h2 id="overtimeHours">1,284 hrs</h2>
+
+                    <div class="kpi-bottom">
+                        <span class="warning">↑ 8.2%</span>
+                        <span>vs last month</span>
+                    </div>
+
+                </div>
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+                        <span class="kpi-title">Turnover Rate</span>
+                        <div class="kpi-icon orange">↻</div>
+                    </div>
+
+                    <h2 id="turnoverRate">4.6%</h2>
+
+                    <div class="kpi-bottom">
+                        <span class="positive">↓ 1.1%</span>
+                        <span>vs last month</span>
+                    </div>
+
+                </div>
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+                        <span class="kpi-title">Employees</span>
+                        <div class="kpi-icon green">👥</div>
+                    </div>
+
+                    <h2 id="employeeCount">248</h2>
+
+                    <div class="kpi-bottom">
+                        <span class="positive">↑ 6</span>
+                        <span>new employees</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Charts -->
+            <section class="charts-grid">
+
+                <!-- Attendance Chart -->
+                <div class="card attendance-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Attendance Overview</h3>
+                            <p>Monthly attendance percentage</p>
+                        </div>
+
+                        <button class="more-btn">•••</button>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
+
+                </div>
+
+
+                <!-- Department Performance -->
+                <div class="card performance-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Department Performance</h3>
+                            <p>Target achievement</p>
+                        </div>
+
+                        <button class="more-btn">•••</button>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Bottom Section -->
+            <section class="bottom-grid">
+
+                <!-- Overtime -->
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Overtime by Department</h3>
+                            <p>Total overtime hours</p>
+                        </div>
+
+                    </div>
+
+                    <div class="overtime-list">
+
+                        <div class="department-row">
+                            <div class="department-info">
+                                <span class="department-dot marketing"></span>
+                                <span>Marketing</span>
+                            </div>
+
+                            <strong>324 hrs</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div style="width: 78%"></div>
+                        </div>
+
+
+                        <div class="department-row">
+                            <div class="department-info">
+                                <span class="department-dot finance"></span>
+                                <span>Finance</span>
+                            </div>
+
+                            <strong>218 hrs</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div style="width: 52%"></div>
+                        </div>
+
+
+                        <div class="department-row">
+                            <div class="department-info">
+                                <span class="department-dot it"></span>
+                                <span>IT</span>
+                            </div>
+
+                            <strong>412 hrs</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div style="width: 92%"></div>
+                        </div>
+
+
+                        <div class="department-row">
+                            <div class="department-info">
+                                <span class="department-dot operations"></span>
+                                <span>Operations</span>
+                            </div>
+
+                            <strong>330 hrs</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div style="width: 81%"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Employee Status -->
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Employee Status</h3>
+                            <p>Current workforce overview</p>
+                        </div>
+
+                    </div>
+
+                    <div class="employee-status">
+
+                        <div class="status-item">
+                            <div class="status-circle active-status">
+                                <span>220</span>
+                            </div>
+
+                            <div>
+                                <strong>Active</strong>
+                                <small>88.7%</small>
+                            </div>
+                        </div>
+
+
+                        <div class="status-item">
+                            <div class="status-circle leave-status">
+                                <span>18</span>
+                            </div>
+
+                            <div>
+                                <strong>On Leave</strong>
+                                <small>7.3%</small>
+                            </div>
+                        </div>
+
+
+                        <div class="status-item">
+                            <div class="status-circle inactive-status">
+                                <span>10</span>
+                            </div>
+
+                            <div>
+                                <strong>Inactive</strong>
+                                <small>4.0%</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Performance Table -->
+            <section class="card table-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Monthly Department Achievement</h3>
+                        <p>Performance against monthly targets</p>
+                    </div>
+
+                    <button class="export-btn" onclick="exportData()">
+                        ↓ Export Report
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Employees</th>
+                                <th>Target</th>
+                                <th>Achievement</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="performanceTable">
+
+                            <tr>
+                                <td>
+                                    <strong>Marketing</strong>
+                                </td>
+
+                                <td>42</td>
+                                <td>100%</td>
+                                <td>108%</td>
+
+                                <td>
+                                    <div class="table-progress">
+                                        <div style="width:100%"></div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge success">Exceeded</span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <strong>Finance</strong>
+                                </td>
+
+                                <td>35</td>
+                                <td>100%</td>
+                                <td>96%</td>
+
+                                <td>
+                                    <div class="table-progress">
+                                        <div style="width:96%"></div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge warning-status">On Track</span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <strong>IT</strong>
+                                </td>
+
+                                <td>51</td>
+                                <td>100%</td>
+                                <td>114%</td>
+
+                                <td>
+                                    <div class="table-progress">
+                                        <div style="width:100%"></div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge success">Exceeded</span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <strong>Operations</strong>
+                                </td>
+
+                                <td>76</td>
+                                <td>100%</td>
+                                <td>91%</td>
+
+                                <td>
+                                    <div class="table-progress">
+                                        <div style="width:91%"></div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge warning-status">On Track</span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                HR Insight Dashboard • Portfolio Project • 2026
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
