@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    // --- 1. PAGE NAVIGATION ROUTING (SPA) ---
+    // --- 1. SPA ROUTING (Ganti Halaman Tanpa Loading) ---
     const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page-content');
     const headerTitle = document.getElementById('headerTitle');
@@ -9,43 +9,63 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Hapus class active dari semua menu dan halaman
+            // Hapus class 'active' dari SEMUA menu dan SEMUA halaman
             navLinks.forEach(l => l.classList.remove('active'));
             pages.forEach(p => p.classList.remove('active'));
             
-            // Tambahkan class active ke menu yang diklik
+            // Tambahkan class 'active' HANYA ke menu dan halaman yang diklik
             this.classList.add('active');
-            
-            // Tampilkan halaman yang sesuai target
             const targetId = this.getAttribute('data-target');
             document.getElementById(targetId).classList.add('active');
             
-            // Ubah Teks Header sesuai menu
-            headerTitle.innerText = this.innerText.trim();
+            // Ubah Judul Header secara dinamis
+            const newTitle = this.getAttribute('data-title');
+            headerTitle.innerText = newTitle;
         });
     });
 
-    // --- 2. UPDATE PROFILE FUNCTIONALITY ---
+    // --- 2. FITUR UPLOAD FOTO PROFIL ---
+    const photoUpload = document.getElementById('photoUpload');
+    if (photoUpload) {
+        photoUpload.addEventListener('change', function(e) {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Tampilkan gambar di preview profil besar
+                    const preview = document.getElementById('profilePreview');
+                    preview.style.backgroundImage = `url(${event.target.result})`;
+                    preview.innerText = ''; // Hapus teks inisial (AD)
+                    
+                    // Tampilkan juga di header pojok kanan atas
+                    const headerAvatar = document.getElementById('headerAvatar');
+                    headerAvatar.style.backgroundImage = `url(${event.target.result})`;
+                    headerAvatar.innerText = ''; // Hapus teks inisial
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // --- 3. SIMPAN FORM PROFIL (Nama, Jabatan, dll) ---
     const profileForm = document.getElementById('updateProfileForm');
-    
     if(profileForm) {
         profileForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Ambil data dari input form
             const newName = document.getElementById('inputName').value;
             const newRole = document.getElementById('inputRole').value;
             
-            // Update teks di Header dan Dashboard Greet
+            // Update UI
             document.getElementById('displayName').innerText = newName;
             document.getElementById('displayRole').innerText = newRole;
-            document.getElementById('greetName').innerText = newName.split(" ")[0]; // Ambil nama depan
+            document.getElementById('greetName').innerText = newName.split(" ")[0]; 
             
             alert("Profile successfully updated!");
         });
     }
 
-    // --- 3. SETTINGS MODAL FUNCTIONALITY ---
+    // --- 4. MODAL PENGATURAN (SETTINGS) ---
     const modal = document.getElementById('settingsModal');
     const btnSettings = document.getElementById('openSettings');
     const spanClose = document.querySelector('.close-modal');
@@ -56,21 +76,18 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.style.display = "block";
         }
     }
-    
     if(spanClose) {
         spanClose.onclick = function() {
             modal.style.display = "none";
         }
     }
-    
-    // Tutup pop-up kalau user klik area luar pop-up
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
 
-    // --- 4. CHART.JS INITIALIZATION ---
+    // --- 5. RENDER GRAFIK CHART.JS ---
     const chartElement = document.getElementById('attendanceChart');
     if(chartElement) {
         const ctx = chartElement.getContext('2d');
