@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Insight | Employee Performance Dashboard</title>
-    <!-- Google Fonts -->
+    <title>HR Insight | Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -30,134 +26,158 @@
                 <div class="nav-section">
                     <span class="section-title">MAIN MENU</span>
                     <ul>
-                        <li class="active"><a href="#"><i class="fa-solid fa-table-cells-large"></i> Dashboard</a></li>
-                        <li><a href="#"><i class="fa-solid fa-users"></i> Employees</a></li>
-                        <li><a href="#"><i class="fa-solid fa-calendar-check"></i> Attendance</a></li>
-                        <li><a href="#"><i class="fa-solid fa-chart-line"></i> Performance</a></li>
+                        <li><a href="#" class="nav-link active" data-target="page-dashboard"><i class="fa-solid fa-table-cells-large"></i> Dashboard</a></li>
+                        <li><a href="#" class="nav-link" data-target="page-attendance"><i class="fa-solid fa-calendar-check"></i> Attendance</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
                     <span class="section-title">MANAGEMENT</span>
                     <ul>
-                        <li><a href="#"><i class="fa-solid fa-user"></i> My Profile</a></li>
-                        <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                        <li><a href="#" class="nav-link" data-target="page-profile"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                        <li><a href="#" id="openSettings"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                        <li><a href="login.html" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                     </ul>
                 </div>
             </nav>
-
-            <div class="sidebar-footer">
-                <div class="avatar-sm">AD</div>
-                <div class="user-meta">
-                    <strong>aliyah daimah</strong>
-                    <span>Administrator</span>
-                </div>
-            </div>
         </aside>
 
         <!-- MAIN WRAPPER -->
         <div class="main-wrapper">
-            
-            <!-- TOP BAR / HEADER -->
+            <!-- HEADER -->
             <header class="top-bar">
                 <div class="page-title-area">
-                    <span class="breadcrumb">OVERVIEW</span>
-                    <h1 class="page-title">Dashboard</h1>
+                    <h1 class="page-title" id="headerTitle">Overview</h1>
                 </div>
-
                 <div class="header-actions">
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input type="text" placeholder="Search...">
                     </div>
-
-                    <div class="profile-card">
+                    <div class="profile-card" id="headerProfileBtn">
                         <div class="avatar-md">AD</div>
                         <div class="profile-info">
-                            <span class="name">aliyah daimah</span>
-                            <span class="role">HR Manager</span>
+                            <span class="name" id="displayName">aliyah daimah</span>
+                            <span class="role" id="displayRole">HR Manager</span>
                         </div>
-                        <i class="fa-solid fa-chevron-down"></i>
                     </div>
                 </div>
             </header>
 
-            <!-- DASHBOARD CONTENT -->
+            <!-- CONTENT AREA (All Pages Container) -->
             <main class="content-area">
                 
-                <!-- GREETING BANNER -->
-                <div class="welcome-header">
-                    <div>
-                        <h2>Good morning, aliyah! 👋</h2>
-                        <p>Here's what's happening with your workforce today.</p>
-                    </div>
-                    <div class="date-filter">
-                        <i class="fa-regular fa-calendar"></i>
-                        <select id="monthSelect">
-                            <option value="jan2026" selected>January 2026</option>
-                            <option value="feb2026">February 2026</option>
-                            <option value="mar2026">March 2026</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- STATS CARDS GRID -->
-                <div class="stats-grid">
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon icon-purple"><i class="fa-solid fa-check"></i></div>
-                        <span class="stat-label">ATTENDANCE RATE</span>
-                        <div class="stat-value">94.8%</div>
-                        <div class="stat-trend trend-up">
-                            <i class="fa-solid fa-arrow-up"></i> 2.4% vs last month
+                <!-- PAGE 1: DASHBOARD -->
+                <section id="page-dashboard" class="page-content active">
+                    <div class="welcome-header">
+                        <div>
+                            <h2>Good morning, <span id="greetName">aliyah</span>! 👋</h2>
+                            <p>Here's what's happening with your workforce today.</p>
                         </div>
                     </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon icon-purple"><i class="fa-regular fa-clock"></i></div>
-                        <span class="stat-label">OVERTIME HOURS</span>
-                        <div class="stat-value">1,284</div>
-                        <div class="stat-trend trend-up">
-                            <i class="fa-solid fa-arrow-up"></i> 8.2% vs last month
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon icon-purple"><i class="fa-solid fa-check"></i></div>
+                            <span class="stat-label">ATTENDANCE RATE</span>
+                            <div class="stat-value">94.8%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon icon-purple"><i class="fa-regular fa-clock"></i></div>
+                            <span class="stat-label">OVERTIME HOURS</span>
+                            <div class="stat-value">1,284</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon icon-purple"><i class="fa-solid fa-users"></i></div>
+                            <span class="stat-label">TOTAL EMPLOYEES</span>
+                            <div class="stat-value">248</div>
                         </div>
                     </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon icon-purple"><i class="fa-solid fa-rotate-left"></i></div>
-                        <span class="stat-label">TURNOVER RATE</span>
-                        <div class="stat-value">4.6%</div>
-                        <div class="stat-trend trend-down">
-                            <i class="fa-solid fa-arrow-down"></i> 1.1% vs last month
+                    <!-- Chart -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Attendance Overview</h3>
                         </div>
+                        <div class="chart-container"><canvas id="attendanceChart"></canvas></div>
                     </div>
+                </section>
 
-                    <div class="stat-card">
-                        <div class="stat-icon icon-purple"><i class="fa-solid fa-users"></i></div>
-                        <span class="stat-label">TOTAL EMPLOYEES</span>
-                        <div class="stat-value">248</div>
-                        <div class="stat-trend trend-up">
-                            <i class="fa-solid fa-arrow-up"></i> 6 new employees
+                <!-- PAGE 2: ATTENDANCE -->
+                <section id="page-attendance" class="page-content">
+                    <div class="table-card">
+                        <div class="table-header">
+                            <h3>Today's Attendance Log</h3>
+                            <button class="btn-primary">Export Report</button>
                         </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Department</th>
+                                    <th>Check In</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sarah Jenkins</td>
+                                    <td>Engineering</td>
+                                    <td>08:45 AM</td>
+                                    <td><span class="badge badge-success">On Time</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Chen</td>
+                                    <td>Marketing</td>
+                                    <td>09:15 AM</td>
+                                    <td><span class="badge badge-warning">Late</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </section>
 
-                </div>
-
-                <!-- CHART SECTION -->
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3>Attendance Overview</h3>
-                        <p>Weekly attendance rate</p>
+                <!-- PAGE 3: PROFILE (Edit Profile) -->
+                <section id="page-profile" class="page-content">
+                    <div class="profile-edit-card">
+                        <h3>Edit Profile Details</h3>
+                        <form id="updateProfileForm">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" id="inputName" value="aliyah daimah">
+                            </div>
+                            <div class="input-group">
+                                <label>Job Role</label>
+                                <input type="text" id="inputRole" value="HR Manager">
+                            </div>
+                            <button type="submit" class="btn-primary mt-3">Save Changes</button>
+                        </form>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="attendanceChart"></canvas>
-                    </div>
-                </div>
+                </section>
 
             </main>
         </div>
     </div>
 
-    <!-- Custom Script -->
+    <!-- SETTINGS MODAL (Pop-up) -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>System Settings</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <span>Dark Mode</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Email Notifications</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

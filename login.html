@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | HR Insight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-header">
+            <div class="brand-icon mx-auto">HR</div>
+            <h2>Welcome Back</h2>
+            <p>Enter your details to access your dashboard.</p>
+        </div>
+        <form id="loginForm" onsubmit="event.preventDefault(); window.location.href='index.html';">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="admin@hrinsight.com" required value="aliyah@hrinsight.com">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••" required value="password123">
+            </div>
+            <button type="submit" class="btn-primary login-btn">Sign In</button>
+        </form>
+    </div>
+</body>
+</html>
